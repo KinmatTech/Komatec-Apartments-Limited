@@ -1,0 +1,37 @@
+Options +FollowSymlinks
+RewriteEngine On
+RewriteRule ^index?$ index.php
+RewriteRule ^paper-([0-9]+) paperedit.php?id=$1 [L]
+RewriteRule ^blockcat-([0-9]+) blockcatedit.php?id=$1 [L]
+RewriteRule ^member-([0-9]+) memberedit.php?id=$1 [L]
+RewriteRule ^paper-([0-9]+) papers.php?id=$1 [L]
+RewriteRule ^post-([0-9]+) postedit.php?id=$1 [L]
+RewriteRule ^postcat-([0-9]+) postcatedit.php?id=$1 [L]
+RewriteRule ^volume-([0-9]+) volumeedit.php?id=$1 [L]
+RewriteRule ^block-([0-9]+) blockedit.php?id=$1 [L]
+RewriteRule ^blockcat-([0-9]+) blockcatedit.php?id=$1 [L]
+RewriteRule ^inc-([0-9]+) incedit.php?id=$1 [L]
+RewriteRule ^inccat-([0-9]+) inccatedit.php?id=$1 [L]
+RewriteRule ^exp-([0-9]+) expedit.php?id=$1 [L]
+RewriteRule ^expcat-([0-9]+) expcatedit.php?id=$1 [L]
+
+
+RewriteRule ^review-([0-9]+) review.php?id=$1 [L]
+RewriteRule ^reviewers-([0-9]+) reviewers.php?id=$1 [L]
+RewriteRule ^peerreview-([0-9]+) peerreview.php?id=$1 [L]
+
+
+
+RewriteCond %{REQUEST_URI}::$1 ^(.*?/)(.*)::\2$
+RewriteRule ^(.*)$ - [E=BASE:%1]
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,}\s([^.]+)\.php [NC]
+RewriteRule ^ %1 [R=301,L]
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^(.*?)/?$ $1.php [NC,L]
+
+
+RewriteRule ^signin_post.php?$ signin_post.php
+RewriteRule ^messageview?$ messageview.php
+
+
